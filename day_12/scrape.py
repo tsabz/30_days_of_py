@@ -26,4 +26,6 @@ table_class = ".imdb-scroll-table"
 
 r_table = r_html.find(table_class)
 
-print(r_table)
+# print(r_table)
+if len(r_table) == 1:
+    print(r_table[0].text)
