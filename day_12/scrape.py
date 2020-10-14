@@ -27,5 +27,24 @@ table_class = ".imdb-scroll-table"
 r_table = r_html.find(table_class)
 
 # print(r_table)
+table_data = []
+header_name = []
 if len(r_table) == 1:
     print(r_table[0].text)
+    parsed_table = r_table[0]
+    rows = parsed_table.find("tr")
+    header_row = rows[0]
+    header_col = header_row.find("th")
+    header_names = [x.text for x in header_col]   
+    for row in rows[1:]:
+        # print(row.text)
+        cols = row.find("td")
+        row_data = []
+        for i, col in enumerate(cols): 
+            # print(i, col.text, '\n\n')
+            row_data.append(col.text)
+        table_data.append(row_data)
+
+
+print(header_name)
+print(table_data)
